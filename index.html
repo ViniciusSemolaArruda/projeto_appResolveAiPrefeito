@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showroom Mobile – Login</title>
+
+  <!-- BASE deve vir antes de qualquer link/script relativo -->
+  <base href="/" />
+
+  <!-- CSS (use caminhos absolutos) -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <link rel="stylesheet" href="/src/styles/splash.css" />
+  <link rel="stylesheet" href="/src/screens/Login/login.css" />
+
+  <!-- JS -->
+  <script src="/src/js/common.js" defer></script>
+  <script src="/src/js/index.js"  defer></script>
+</head>
+<body>
+  <!-- ===== Splash ===== -->
+  <div class="splash-layer" id="splash" aria-label="Tela de abertura do app">
+    <div class="splash-card" role="img" aria-label="Logo e título do app">
+      <img src="./src/assets/img/logo.png" alt="Brasão da Prefeitura" class="splash-logo" />
+      <h1 class="splash-title">Resolve Aí Prefeito</h1>
+      <p class="splash-subtitle">Eng. Paulo de Frontin</p>
+      <p class="splash-tagline slide-up" style="--d:120ms">Conectando você à sua cidade</p>
+      <a class="splash-system slide-up" href="#" aria-disabled="true" style="--d:260ms">Sistema de Ocorrências Urbanas</a>
+    </div>
+  </div>
+
+  <!-- ===== Login ===== -->
+  <main class="app-frame" id="page-login">
+    <section class="screen center">
+      <div class="auth-card" role="form" aria-label="Login do sistema">
+        <img src="./src/assets/img/logo.png" class="auth-logo" alt="Brasão do município" />
+        <h1 class="auth-title">Resolve Aí Prefeito</h1>
+        <p class="auth-subtitle">Eng. Paulo de Frontin</p>
+
+        <h2 class="auth-heading">Resolve Aí Prefeito</h2>
+        <p class="auth-desc">Sistema de Ocorrências Urbanas de Eng. Paulo de Frontin</p>
+
+        <div class="segmented" role="tablist" aria-label="Escolha entre entrar ou registrar">
+          <button class="seg-btn active" role="tab" aria-selected="true" id="tab-login">Entrar</button>
+          <button class="seg-btn" role="tab" aria-selected="false" id="tab-register">Registrar</button>
+        </div>
+
+        <form class="form" id="form-login" novalidate>
+          <label class="label" for="login-email">Email</label>
+          <input class="input" id="login-email" type="email" placeholder="seu@email.com" autocomplete="email" required />
+
+          <label class="label" for="login-pass">Senha</label>
+          <input class="input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password" required />
+
+          <a class="link-forgot" href="#">Esqueceu sua senha?</a>
+
+          <button class="btn-primary" type="submit" id="btn-entrar">Entrar</button>
+          <button class="btn-admin" type="button" id="btn-admin">Entrar como Administrador</button>
+        </form>
+
+        <form class="form hidden" id="form-register" novalidate>
+          <label class="label" for="reg-name">Nome completo</label>
+          <input class="input" id="reg-name" type="text" placeholder="Seu nome" autocomplete="name" required />
+
+          <label class="label" for="reg-email">Email</label>
+          <input class="input" id="reg-email" type="email" placeholder="seu@email.com" autocomplete="email" required />
+
+          <label class="label" for="reg-pass">Senha</label>
+          <input class="input" id="reg-pass" type="password" placeholder="Crie uma senha" autocomplete="new-password" required />
+
+          <label class="label" for="reg-pass2">Confirmar senha</label>
+          <input class="input" id="reg-pass2" type="password" placeholder="Confirme a senha" autocomplete="new-password" required />
+
+          <button class="btn-primary" type="submit">Criar conta</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

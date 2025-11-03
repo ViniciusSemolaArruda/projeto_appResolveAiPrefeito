@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showroom Mobile – Registrar Ocorrência</title>
+<base href="/" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <link rel="stylesheet" href="/src/screens/Report/report.css" />
+
+  <!-- Helpers -->
+ <script src="/src/js/common.js" defer></script>
+<script src="/src/js/report.js" defer></script>
+
+</head>
+<body>
+  <main class="app-frame" id="page-report">
+    <header class="home-header report-topbar">
+
+      <div class="home-brand">
+        <img src="./src/assets/img/logo.png" alt="Logo" class="home-logo" />
+        <span class="home-title">Resolve Aí Prefeito</span>
+      </div>
+      <div class="home-actions">
+    <!-- Botão de notificação com bolinha -->
+    <button class="icon-btn notify-btn" aria-label="Notificações" id="btn-notify">
+      <img src="/src/assets/img/notificacao.png" alt="Notificações" />
+      <span class="notify-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Sair reinicia o app -->
+    <a class="icon-btn" aria-label="Sair" href="/index.html" id="btn-logout">
+      <img src="/src/assets/img/sair.png" alt="Sair" />
+    </a>
+  </div>
+    </header>
+
+    <div class="report-subheader">
+      <button class="back-link" id="btn-back-report" aria-label="Voltar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Voltar</span>
+      </button>
+    </div>
+
+    <section class="report-screen">
+      <article class="report-card">
+        <h2 class="report-title">Registrar Nova Ocorrência</h2>
+        <p class="report-sub">Preencha as informações abaixo para reportar um problema na sua cidade</p>
+
+        <!-- Foto -->
+        <div class="field">
+          <label class="label">Foto da Ocorrência <small>(opcional)</small></label>
+          <div class="dropzone">
+            <div class="dz-icons">
+              <img src="./src/assets/img/camera.png" alt="" />
+              <img src="./src/assets/img/upload.png" alt="" />
+            </div>
+            <p class="dz-hint">Tire uma foto ou escolha uma da galeria</p>
+            <label class="btn-file">
+              <input type="file" accept="image/*" />
+              Escolher arquivo
+            </label>
+          </div>
+        </div>
+
+        <!-- Categoria -->
+        <div class="field">
+          <label class="label" for="cat">Categoria <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="cat">
+              <option value="">Selecione a categoria</option>
+              <option>Iluminação Pública</option>
+              <option>Buraco na Via</option>
+              <option>Coleta de Lixo</option>
+              <option>Obstrução de Calçada</option>
+              <option>Vazamento de Água</option>
+            </select>
+            <span class="chev">▾</span>
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <div class="field">
+          <label class="label" for="desc">Descrição do Problema <span class="req">*</span></label>
+          <textarea id="desc" rows="4" placeholder="Descreva o problema em detalhes..."></textarea>
+        </div>
+
+        <!-- Endereço -->
+        <div class="field">
+          <label class="label" for="addr">Endereço <span class="req">*</span></label>
+          <div class="addr-row">
+            <input id="addr" type="text" placeholder="Rua, número, bairro..." />
+            <button class="geo-btn" type="button" id="btn-geolocate" title="Usar minha localização">
+              <img src="./src/assets/img/pin.png" alt="Localizar" />
+            </button>
+          </div>
+          <small class="hint">Clique no ícone do mapa para usar sua localização atual</small>
+        </div>
+
+        <!-- Mapa (mock) -->
+        <div class="map-box">
+          <img src="./src/assets/img/mapa.png" alt="Mapa de exemplo" class="map-img" />
+          <div class="map-pin">📍</div>
+          <small class="map-caption">Mapa interativo (Google Maps)</small>
+        </div>
+
+        <!-- Botão Enviar -->
+        <button class="btn-send" type="button" id="btn-enviar-oc">Enviar Ocorrência</button>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

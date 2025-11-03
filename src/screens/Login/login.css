@@ -1,0 +1,153 @@
+/* Fundo apenas para a tela de login (pastel suave) */
+.screen.center {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 16px;
+  background: linear-gradient(145deg, #0096FF 0%, #00A36C 50%, #FFD700 100%);
+}
+
+/* Card branco central (sombra leve e arredondado) */
+.auth-card{
+  background: #fff;
+  color: #1b2430;
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,.04);
+}
+
+/* Logo (igual à referência) */
+.auth-logo{
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 6px auto 10px auto;
+}
+
+/* Hierarquia de títulos */
+.auth-title{
+  margin: 0;
+  font-size: 22px;        /* ↓ reduzido */
+  font-weight: 800;
+  color: #2468B1;
+  text-align: center;
+}
+.auth-subtitle{
+  margin: 2px 0 10px;
+  font-size: 16px;        /* ↓ reduzido */
+  text-align: center;
+  color: #5c6675;
+}
+.auth-heading{
+  margin: 0;
+  text-align: center;
+  font-size: 20px;        /* ↓ reduzido */
+  font-weight: 800;
+  color: #1c2633;
+}
+.auth-desc{
+  margin: 4px auto 14px;
+  text-align: center;
+  font-size: 18px;        /* ↓ reduzido */
+  color: #6a7688;
+  max-width: 30ch;
+}
+
+
+/* Segment control (Entrar/Registrar) – claro, com pílula ativa */
+.segmented{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #EEF2F7;
+  border-radius: 999px;
+  padding: 4px;
+  margin: 10px 0 12px;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.seg-btn{
+  border: 0;
+  background: transparent;
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #7a8696;
+}
+.seg-btn.active{
+  background: #ffffff;
+  color: #1c2633;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+/* Formulários */
+.form{ display: grid; gap: 10px; }
+.hidden{ display: none; }
+
+.label{
+  font-size: 13px;
+  color: #334155;
+  margin-top: 4px;
+}
+
+/* Inputs brancos, borda suave (não preenchidos de azul) */
+.input{
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e6e9ef;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.input::placeholder{ color: #9aa6b2; }
+.input:focus{
+  border-color: #8ab9ff;
+  box-shadow: 0 0 0 3px rgba(36,104,177,.14);
+}
+
+/* Link "Esqueceu sua senha?" em azul discreto */
+.link-forgot{
+  color: #2468B1;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 2px 0 0;
+  width: max-content;
+}
+
+/* Botão principal: gradiente azul com sombra, largura total */
+.btn-primary{
+  margin-top: 8px;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(180deg, #2F86FF 0%, #1A73E8 100%);
+  box-shadow: 0 8px 18px rgba(33,106,221,.28), inset 0 1px 0 rgba(255,255,255,.35);
+}
+.btn-primary:active{ transform: translateY(1px); }
+
+/* Botão Admin: branco com borda verde */
+.btn-admin{
+  margin-top: 10px;
+  appearance: none;
+  background: #fff;
+  color: #1a7a2e;
+  border: 2px solid #1a7a2e;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 800;
+  box-shadow: none;
+}
+
+/* Ajuste leve em telas >420px */
+@media (min-width: 420px){
+  .auth-card{ padding: 22px 18px; }
+  .auth-logo{ width: 100px; }
+}

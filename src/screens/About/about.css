@@ -1,0 +1,200 @@
+/* ============================================
+   SOBRE A PREFEITURA
+   ============================================ */
+
+/* Header grande que você já usa (logo 100 × 100 e título 20px) */
+.home-header{
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.home-brand{ display:flex; align-items:center; gap:10px; }
+.home-logo{ width:100px; height:100px; object-fit:contain; }
+.home-title{ font-weight:600; color:#2468B1; font-size:20px; }
+.home-actions{ display:flex; align-items:center; gap:10px; }
+.icon-btn{ border:none; background:transparent; padding:6px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.icon-btn img{ width:26px; height:26px; object-fit:contain; transition:opacity .2s ease; }
+.icon-btn:hover img{ opacity:.7; }
+
+/* Sub-barra Voltar (respeita altura real do header via JS) */
+.report-subheader{
+  position: sticky;
+  top: var(--topbar-h, 100px);
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 10px 14px;
+}
+.back-link{
+  display:inline-flex; align-items:center; gap:8px;
+  background:transparent; border:0; padding:4px 0;
+  color:#111; font-weight:700; font-size:14px; cursor:pointer;
+}
+.back-link:hover{ opacity:.85; }
+.back-link:active{ transform: translateY(1px); }
+
+/* Área */
+.about-screen{ padding:12px; display:grid; gap:14px; }
+
+/* Card base */
+.about-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  padding:16px 18px;
+  box-shadow:0 3px 10px rgba(0,0,0,.06);
+}
+
+/* Intro link */
+.intro-link .intro-title{
+  color:#2468B1; font-weight:800; font-size:18px; margin:0 0 4px;
+}
+.intro-link .intro-sub{
+  color:#6b7482; font-size:14.5px; margin:0;
+}
+.intro-anchor{ text-decoration:none; display:block; }
+
+/* HERO */
+.hero-card{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  height:190px;
+  background:#e9eef6;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+.hero-card::before{
+  content:""; position:absolute; inset:0;
+  background-image: var(--hero);
+  background-size: cover; background-position:center;
+  filter: brightness(.9);
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:16px;
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.0) 50%);
+}
+.hero-title{
+  margin:0;
+  color:#fff; font-weight:900; font-size:24px; line-height:1.15;
+  text-shadow:0 1px 2px rgba(0,0,0,.45);
+}
+.hero-sub{
+  margin:6px 0 0; color:#e6eef9; font-size:13.5px;
+}
+
+/* Títulos e parágrafos */
+.section-title{ margin:0 0 10px; color:#1c2633; font-weight:800; font-size:16px; }
+.section-title-blue{ color:#2468B1; }
+.p{ color:#3d4957; line-height:1.5; margin:0 0 10px; }
+
+/* KPIs (Missão/Visão/Valores/Compromisso) */
+.kpi-row{ display:grid; gap:12px; }
+.kpi-item{ display:flex; gap:12px; align-items:flex-start; }
+.kpi-ic{
+  --tint:#5DADEC;
+  width:44px; height:44px; border-radius:999px;
+  background: color-mix(in hsl, var(--tint) 20%, white 80%);
+  border:1px solid color-mix(in hsl, var(--tint) 35%, white 65%);
+  display:grid; place-items:center; flex:0 0 44px;
+}
+.kpi-ic img{ width:28px; height:28px; object-fit:contain; filter: drop-shadow(0 0 0 var(--tint)); }
+.kpi-txt h4{ margin:0 0 4px; font-weight:800; color:#1c2633; font-size:15px; }
+.kpi-txt p{ margin:0; color:#586474; line-height:1.45; }
+
+/* Facts (Dados da Cidade) */
+.facts .facts-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+}
+.fact{ display:grid; gap:4px; }
+.fact-label{ color:#6b7482; font-size:13px; }
+.fact-value{ font-weight:900; font-size:22px; line-height:1; }
+.fact-hint{ color:#8b94a1; font-size:12px; }
+.fact-blue{ color:#2468B1; }
+.fact-green{ color:#16A34A; }
+.fact-yellow{ color:#FDB100; }
+
+/* App callout */
+.appcall{ border:1px solid #b9d3f6; box-shadow:0 0 0 3px rgba(36,104,177,.08); }
+.check-list {
+  margin: 8px 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #264a2f;
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.check-list li img {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 2px;
+}
+
+.note{ margin-top:10px; color:#5a6a80; }
+
+/* Ajustes maiores */
+@media (min-width:420px){
+  .hero-card{ height:210px; }
+  .hero-title{ font-size:26px; }
+}
+/* ===== Ícones Header ===== */
+.icon-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: opacity .2s ease;
+}
+
+.icon-btn:hover img { opacity: .7; }
+
+/* ===== Bolinha de notificação ===== */
+.notify-btn {
+  position: relative;
+}
+
+.notify-dot {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  background-color: #ff2b2b;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}

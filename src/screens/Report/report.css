@@ -1,0 +1,352 @@
+/* =========================
+   src/screens/Report/report.css
+   ========================= */
+
+/* ——— Variável de altura do header (atualizada via JS) ——— */
+:root {
+  --topbar-h: 100px; /* altura padrão inicial do header */
+}
+
+/* ===== Header principal ===== */
+.home-header {
+  position: sticky;
+  top: 0;
+  z-index: 30; /* acima da sub-barra */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.home-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.home-title {
+  font-weight: 600;
+  color: #2468B1;
+  font-size: 20px;
+}
+.home-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== Ícones de ação (notificação e sair) ===== */
+.icon-btn {
+  border: none;
+  background: transparent;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.icon-btn img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: opacity .2s ease;
+}
+.icon-btn:hover img {
+  opacity: 0.7;
+}
+
+/* ===== Sub-barra "Voltar" ===== */
+.report-subheader {
+  position: sticky;
+  top: var(--topbar-h); /* fica logo abaixo do header */
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 10px 14px;
+}
+
+/* Botão Voltar */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 0;
+  padding: 4px 0;
+  color: #111;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.back-link:hover {
+  opacity: .85;
+}
+.back-link:active {
+  transform: translateY(1px);
+}
+
+/* ===== Conteúdo ===== */
+.report-screen {
+  padding: 16px;
+  display: grid;
+}
+
+.report-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  padding: 16px;
+}
+
+/* Títulos */
+.report-title {
+  color: #2468B1;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 0 4px;
+}
+.report-sub {
+  color: #6b7482;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+/* Campos */
+.field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.label {
+  font-weight: 700;
+  color: #1c2633;
+}
+.req {
+  color: #D83A2E;
+}
+
+/* Select custom */
+.select-wrap {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  padding: 0 10px;
+}
+.select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 42px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: #1c2633;
+}
+.select-wrap .chev {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7482;
+  pointer-events: none;
+}
+
+/* Inputs / Textarea */
+textarea,
+.addr-row input {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  padding: 12px;
+  font: inherit;
+  color: #1c2633;
+  background: #fff;
+  outline: none;
+}
+textarea:focus,
+.addr-row input:focus,
+.select-wrap select:focus {
+  border-color: #2468B1;
+  box-shadow: 0 0 0 3px rgba(36,104,177,.12);
+}
+
+/* Endereço + botão geolocalização */
+.addr-row {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 8px;
+  align-items: center;
+}
+.geo-btn {
+  border: 1px solid rgba(0,0,0,.15);
+  background: #fff;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  height: 42px;
+  cursor: pointer;
+}
+.geo-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+.hint {
+  color: #6b7482;
+}
+
+/* Dropzone de imagem */
+.dropzone {
+  border: 2px dashed rgba(0,0,0,.2);
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  background: #fafafa;
+}
+.dz-icons {
+  display: flex;
+  gap: 16px;
+  opacity: .55;
+}
+.dz-icons img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.dz-hint {
+  color: #6b7482;
+  font-size: 14px;
+  margin: 0;
+}
+
+.btn-file {
+  display: inline-grid;
+  place-items: center;
+  background: #fff;
+  color: #1c2633;
+  border: 1px solid rgba(0,0,0,.2);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-file input {
+  display: none;
+}
+
+/* Mapa com imagem */
+.map-box {
+  position: relative;
+  height: 200px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f1f3f5;
+  display: grid;
+  place-items: center;
+}
+.map-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1) brightness(.95);
+}
+.map-pin {
+  position: relative;
+  z-index: 1;
+  font-size: 22px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+.map-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  z-index: 1;
+  background: rgba(255,255,255,.9);
+  color: #1c2633;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+/* Botão Enviar */
+.btn-send {
+  width: 100%;
+  height: 48px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #0FA36B;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(15,163,107,.25);
+}
+.btn-send:active {
+  transform: translateY(1px);
+}
+
+/* ===== Responsivo ===== */
+@media (min-width: 420px) {
+  .report-card { padding: 20px; }
+}
+/* ===== Ícones Header ===== */
+.icon-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: opacity .2s ease;
+}
+
+.icon-btn:hover img { opacity: .7; }
+
+/* ===== Bolinha de notificação ===== */
+.notify-btn {
+  position: relative;
+}
+
+.notify-dot {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  background-color: #ff2b2b;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}

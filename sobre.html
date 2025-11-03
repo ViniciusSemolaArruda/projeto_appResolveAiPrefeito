@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showroom Mobile – Sobre a Prefeitura</title>
+  <base href="/" />
+
+  <!-- CSS base -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <!-- CSS desta página -->
+  <link rel="stylesheet" href="/src/screens/About/about.css" />
+
+  <!-- Helpers + Script desta página -->
+  <script src="/src/js/common.js" defer></script>
+  <script src="/src/js/about.js" defer></script>
+</head>
+<body>
+  <main class="app-frame" id="page-about">
+
+    <!-- Header igual às outras telas -->
+    <header class="home-header">
+      <div class="home-brand">
+        <img src="/src/assets/img/logo.png" alt="Logo" class="home-logo" />
+        <span class="home-title">Resolve Aí Prefeito</span>
+      </div>
+      <div class="home-actions">
+    <!-- Botão de notificação com bolinha -->
+    <button class="icon-btn notify-btn" aria-label="Notificações" id="btn-notify">
+      <img src="/src/assets/img/notificacao.png" alt="Notificações" />
+      <span class="notify-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Sair reinicia o app -->
+    <a class="icon-btn" aria-label="Sair" href="/index.html" id="btn-logout">
+      <img src="/src/assets/img/sair.png" alt="Sair" />
+    </a>
+  </div>
+    </header>
+
+    <!-- Sub-barra: Voltar (logo abaixo do header) -->
+    <div class="report-subheader">
+      <button class="back-link" id="btn-back-about" aria-label="Voltar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Voltar</span>
+      </button>
+    </div>
+
+    <section class="about-screen">
+
+      <!-- Card de introdução (link/teaser) -->
+      <article class="about-card intro-link">
+        <a href="#" class="intro-anchor" aria-disabled="true">
+          <h2 class="intro-title">Sobre a Prefeitura</h2>
+          <p class="intro-sub">Conheça nossa história e nosso compromisso com você</p>
+        </a>
+      </article>
+
+      <!-- HERO com imagem e texto sobreposto -->
+      <article class="hero-card" style="--hero:url('/src/assets/img/cidade-hero.jpg')">
+        <div class="hero-overlay">
+          <h2 class="hero-title">Engenheiro Paulo<br/>de Frontin</h2>
+          <p class="hero-sub">Uma cidade em constante evolução</p>
+        </div>
+      </article>
+
+      <!-- Nossa História -->
+      <article class="about-card">
+        <h3 class="section-title">Nossa História</h3>
+        <p class="p">
+          Engenheiro Paulo de Frontin é um município brasileiro do estado do Rio de Janeiro.
+          Com uma população acolhedora e uma rica história, nossa cidade se destaca pelo
+          compromisso com o desenvolvimento sustentável e a qualidade de vida de seus habitantes.
+        </p>
+        <p class="p">
+          Nossa administração trabalha diariamente para melhorar a infraestrutura, os serviços
+          públicos e promover o bem-estar de todos os cidadãos. Este aplicativo é mais uma
+          ferramenta para aproximar o poder público da população.
+        </p>
+      </article>
+
+      <!-- Missão / Visão / Valores / Compromisso -->
+      <article class="about-card kpi">
+        <div class="kpi-row">
+          <div class="kpi-item">
+            <span class="kpi-ic" style="--tint:#5DADEC">
+              <img src="/src/assets/img/ico-alvo.png" alt="" />
+            </span>
+            <div class="kpi-txt">
+              <h4>Missão</h4>
+              <p>Promover o desenvolvimento sustentável e a qualidade de vida dos cidadãos através de gestão eficiente e participativa.</p>
+            </div>
+          </div>
+
+          <div class="kpi-item">
+            <span class="kpi-ic" style="--tint:#000000">
+              <img src="/src/assets/img/ico-visao.png" alt="" />
+            </span>
+            <div class="kpi-txt">
+              <h4>Visão</h4>
+              <p>Ser referência em gestão pública municipal, com transparência, eficiência e inovação em todas as ações.</p>
+            </div>
+          </div>
+
+          <div class="kpi-item">
+            <span class="kpi-ic" style="--tint:#FFD43B">
+              <img src="/src/assets/img/ico-coracao.png" alt="" />
+            </span>
+            <div class="kpi-txt">
+              <h4>Valores</h4>
+              <p>Transparência, ética, respeito, comprometimento e responsabilidade social em todas as nossas ações.</p>
+            </div>
+          </div>
+
+          <div class="kpi-item">
+            <span class="kpi-ic" style="--tint:#FF6B6B">
+              <img src="/src/assets/img/ico-compromisso.png" alt="" />
+            </span>
+            <div class="kpi-txt">
+              <h4>Compromisso</h4>
+              <p>Trabalhar incansavelmente para atender às necessidades da população e construir uma cidade melhor para todos.</p>
+            </div>
+          </div>
+
+          <div class="kpi-item">
+            <span class="kpi-ic" style="--tint:#009234">
+              <img src="/src/assets/img/prefeito.png" alt="" />
+            </span>
+            <div class="kpi-txt">
+              <h4>Prefeito</h4>
+              <p>MANEKO ARTEMENKO. Prefeito - Engenheiro Paulo De Frontin/ RJ União Brasil - UNIÃO 56.570.196/0001-04 44.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dados da Cidade -->
+      <article class="about-card facts">
+        <h3 class="section-title">Dados da Cidade</h3>
+
+        <div class="facts-grid">
+          <div class="fact">
+            <span class="fact-label">População</span>
+            <strong class="fact-value fact-blue">~15.000</strong>
+            <small class="fact-hint">habitantes</small>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Área</span>
+            <strong class="fact-value fact-green">110 km²</strong>
+            <small class="fact-hint">território</small>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Fundação</span>
+            <strong class="fact-value fact-yellow">1959</strong>
+            <small class="fact-hint">emancipação</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Resolve Aí Prefeito -->
+      <article class="about-card appcall">
+        <h3 class="section-title section-title-blue">Resolve Aí Prefeito</h3>
+        <p class="p">
+          O “Resolve Aí Prefeito” foi desenvolvido para facilitar a comunicação entre a
+          população e a prefeitura. Através dele, você pode:
+        </p>
+        <ul class="check-list">
+  <li><img src="/src/assets/img/ico-certo.png" alt="" /> Reportar problemas de infraestrutura em tempo real</li>
+  <li><img src="/src/assets/img/ico-certo.png" alt="" /> Acompanhar o status das suas solicitações</li>
+  <li><img src="/src/assets/img/ico-certo.png" alt="" /> Receber notificações sobre atualizações</li>
+  <li><img src="/src/assets/img/ico-certo.png" alt="" /> Contribuir para uma cidade melhor</li>
+</ul>
+
+        <p class="note">
+          <em>Juntos, podemos fazer de Eng. Paulo de Frontin uma cidade ainda melhor!</em>
+        </p>
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>

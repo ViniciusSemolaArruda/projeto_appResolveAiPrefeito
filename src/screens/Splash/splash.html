@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Splash</title>
+  <link rel="stylesheet" href="../../styles/reset.css" />
+  <link rel="stylesheet" href="../../styles/styles.css" />
+  <link rel="stylesheet" href="../../styles/splash.css" />
+  <base href="/" />
+</head>
+<body>
+  <div class="splash-layer" aria-label="Tela de abertura do app">
+    <div class="splash-card" role="img" aria-label="Logo e título do app">
+      <img src="../../assets/img/logo.png" alt="Brasão da Prefeitura" class="splash-logo" />
+      <h1 class="splash-title">Resolve Aí Prefeito</h1>
+      <p class="splash-subtitle">Eng. Paulo de Frontin</p>
+
+      <p class="splash-tagline slide-up" style="--d:120ms">Conectando você à sua cidade</p>
+      <a class="splash-system slide-up" href="#" aria-disabled="true" style="--d:260ms">
+        Sistema de Ocorrências Urbanas
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const redirectTarget = '../../index.html';
+    document.documentElement.classList.add('splash-mounted');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const DISPLAY_TIME_MS = 3000;
+    setTimeout(() => {
+      if (!prefersReduced) {
+        document.documentElement.classList.add('splash-leaving');
+        setTimeout(() => { window.location.href = redirectTarget; }, 500);
+      } else {
+        window.location.href = redirectTarget;
+      }
+    }, DISPLAY_TIME_MS);
+  </script>
+</body>
+</html>

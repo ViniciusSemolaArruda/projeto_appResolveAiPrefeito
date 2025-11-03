@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showroom Mobile – Detalhe da Ocorrência</title>
+  <base href="/" />
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <link rel="stylesheet" href="/src/screens/Cases/cases.css" />
+  
+  <script src="/src/js/common.js" defer></script>
+  <script src="/src/js/data.js" defer></script>
+  <script src="/src/js/case.js" defer></script>
+</head>
+<body>
+  <main class="app-frame" id="page-case">
+    <header class="home-header report-topbar">
+      <div class="home-brand">
+        <img src="/src/assets/img/logo.png" alt="Logo" class="home-logo" />
+        <span class="home-title">Resolve Aí Prefeito</span>
+      </div>
+      <div class="home-actions">
+    <!-- Botão de notificação com bolinha -->
+    <button class="icon-btn notify-btn" aria-label="Notificações" id="btn-notify">
+      <img src="/src/assets/img/notificacao.png" alt="Notificações" />
+      <span class="notify-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Sair reinicia o app -->
+    <a class="icon-btn" aria-label="Sair" href="/index.html" id="btn-logout">
+      <img src="/src/assets/img/sair.png" alt="Sair" />
+    </a>
+  </div>
+
+    </header>
+
+    <div class="report-subheader">
+      <button class="back-link" id="btn-back-case" aria-label="Voltar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Voltar</span>
+      </button>
+    </div>
+
+    <section class="case-detail-screen">
+      <article class="case-detail-card">
+        <div class="case-detail-head">
+          <h2 class="case-detail-title" id="cd-title">Título da ocorrência</h2>
+          <span class="badge badge-progress" id="cd-status">Em andamento</span>
+        </div>
+        <p class="case-detail-protocol" id="cd-protocol">Protocolo: EPF-0000-000</p>
+        <div class="case-detail-media">
+          <img id="cd-image" src="/src/assets/img/buraco.png" alt="Foto da ocorrência" />
+        </div>
+        <div class="case-detail-section">
+          <h3>Categoria</h3>
+          <p id="cd-category">—</p>
+        </div>
+        <div class="case-detail-section">
+          <h3>Descrição</h3>
+          <p id="cd-description">—</p>
+        </div>
+        <div class="case-detail-section">
+          <h3>Endereço</h3>
+          <p id="cd-address">—</p>
+        </div>
+        <div class="case-detail-section">
+          <h3>Histórico de Atualizações</h3>
+          <ol class="timeline" id="cd-timeline"></ol>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,10 +1,11 @@
+/*src\screens\Splash\splash.css*/
 :root{
   --blue:#2468B1;
   --radius-xl: 20px;
   --shadow-1: 0 10px 36px rgba(0,0,0,.18);
 }
 
-/* Camada de splash (overlay) */
+/* Camada de splash estática (sem slide geral) */
 .splash-layer{
   position: fixed;
   inset: 0;
@@ -17,7 +18,7 @@
   transition: opacity .5s ease;
 }
 
-/* Quando for sair, fade out */
+/* Quando for sair, só faz fade */
 html.splash-leaving .splash-layer{
   opacity: 0;
 }
@@ -33,13 +34,7 @@ html.splash-leaving .splash-layer{
   width: 100%;
 }
 
-/* LOGO MAIOR + responsivo */
-.splash-logo{
-  width: 200px;              /* tamanho maior */
-  height: auto;
-  display: block;
-  margin: 0 auto 20px;       /* espaço um pouco maior abaixo */
-}
+
 
 /* Títulos */
 .splash-title{
@@ -79,7 +74,7 @@ html.splash-leaving .splash-layer{
 /* Dispara a animação nos textos quando a splash monta */
 html.splash-mounted .slide-up{
   animation: slideUp .48s cubic-bezier(.22,.8,.25,1) forwards;
-  animation-delay: var(--d, 0ms);
+  animation-delay: var(--d, 0ms); /* delay específico via style inline */
 }
 
 @keyframes slideUp{
@@ -95,48 +90,4 @@ html.splash-mounted .slide-up{
     opacity: 1 !important;
     transform: none !important;
   }
-}
-
-/* ===== Ícones Header ===== */
-.icon-btn {
-  position: relative;
-  border: none;
-  background: transparent;
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.icon-btn img {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
-  transition: opacity .2s ease;
-}
-
-.icon-btn:hover img { opacity: .7; }
-
-/* ===== Bolinha de notificação ===== */
-.notify-btn {
-  position: relative;
-}
-
-.notify-dot {
-  position: absolute;
-  top: 2px;
-  right: 4px;
-  width: 9px;
-  height: 9px;
-  background-color: #ff2b2b;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #fff;
-  animation: pulseDot 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
 }

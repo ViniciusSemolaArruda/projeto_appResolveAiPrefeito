@@ -1,0 +1,297 @@
+/* =========================
+   Contato – layout mobile
+   ========================= */
+
+/* Altura do header (mantém logo 100x100 e título 20px) */
+:root { --topbar-h: 100px; }
+
+/* Header igual às outras páginas */
+.home-header{
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.home-brand{ display: flex; align-items: center; gap: 10px; }
+.home-logo{ width: 100px; height: 100px; object-fit: contain; }
+.home-title{ font-weight: 600; color: #2468B1; font-size: 20px; }
+.home-actions{ display: flex; align-items: center; gap: 10px; }
+.icon-btn{ border:none; background:transparent; padding:6px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.icon-btn img{ width:26px; height:26px; object-fit:contain; transition:opacity .2s; }
+.icon-btn:hover img{ opacity:.7; }
+
+/* Sub-barra "Voltar" posicionada logo abaixo do header */
+.report-subheader{
+  position: sticky;
+  top: var(--topbar-h);
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 10px 14px;
+}
+.back-link{
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 0; padding: 4px 0;
+  color: #111; font-weight: 700; font-size: 14px; cursor: pointer;
+}
+.back-link:hover{ opacity:.85; }
+.back-link:active{ transform: translateY(1px); }
+
+/* Área */
+.contact-screen{ padding:12px; display:grid; gap:14px; }
+
+/* Cartões */
+.contact-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  padding:16px 18px;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+.card-title{
+  margin:0 0 6px; color:#2468B1; font-weight:800; font-size:18px;
+}
+.card-sub{ margin:0; color:#6b7482; font-size:14.5px; }
+
+/* Títulos de seção */
+.section-title{
+  margin:0 0 12px;
+  color:#0f1d2b; font-weight:800; font-size:17px;
+}
+
+/* Itens com ícone em bolha azul */
+.item{
+  display:flex; align-items:flex-start; gap:12px;
+  padding:10px 8px; border-radius:12px;
+}
+.item + .item{ margin-top:4px; }
+
+.ic{
+  width:40px; height:40px; border-radius:50%;
+  display:grid; place-items:center;
+  background: radial-gradient(100% 100% at 30% 20%, #e8f2ff 0%, #d9e9ff 100%);
+  color:#2468B1; font-size:18px;
+  border:1px solid #cfe1ff;
+}
+.ic img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(2400%) hue-rotate(197deg) brightness(92%) contrast(94%);
+}
+.itxt strong{
+  display:block; color:#1c2633; font-weight:800; font-size:14.5px; line-height:1.2;
+}
+.itxt small{
+  display:block; color:#586474; font-size:13.5px; line-height:1.35; margin-top:2px;
+}
+
+/* Linhas de horário */
+.row-schedule{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px; border:1px solid rgba(0,0,0,.06);
+  border-radius:10px; background:#fafbfd; margin-bottom:8px;
+}
+.row-schedule span{ color:#3d4957; }
+.row-schedule strong{ color:#0f1d2b; }
+
+/* Botões de redes */
+.btns{ display:flex; flex-wrap:wrap; gap:10px; }
+.btn-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  height:36px; padding:0 14px; border-radius:999px;
+  background:#f2f6ff; color:#2468B1; border:1px solid #cfe1ff; font-weight:800; text-decoration:none;
+}
+.btn-pill.ig{ background:#fff0f3; color:#D2266E; border-color:#ffdae6; }
+
+/* Mapa (placeholder) */
+.map-box{ padding:6px 0; }
+.map-placeholder{
+  border:1px solid rgba(0,0,0,.08); border-radius:14px;
+  background:#f5f7fb; display:grid; place-items:center; padding:24px;
+}
+.map-placeholder .pin{ font-size:28px; }
+.map-placeholder .map-title{
+  margin:8px 0 0; color:#6b7482; font-size:14px; text-align:center;
+}
+.map-placeholder .map-addr{
+  display:block; margin-top:6px; color:#3d4957; font-size:12.5px; text-align:center;
+}
+
+/* Pequeno ganho em telas maiores */
+@media (min-width:420px){
+  .card-title{ font-size:19px; }
+  .section-title{ font-size:18px; }
+}
+
+/* Redes sociais (1 embaixo da outra) */
+/* ===== Redes sociais (vertical) ===== */
+.btns-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btns-vertical .btn-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 15px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 3px 8px rgba(0,0,0,.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btns-vertical .btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.btns-vertical .btn-pill img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: transform .2s ease;
+}
+
+.btns-vertical .btn-pill:hover img {
+  transform: scale(1.08);
+}
+
+/* ===== Cores individuais ===== */
+.btn-pill.site {
+  color: #111;
+}
+
+.btn-pill.site img {
+  filter: brightness(0); /* deixa o ícone preto */
+}
+
+.btn-pill.facebook {
+  color: #1877F2;
+}
+
+.btn-pill.facebook img {
+  filter: invert(34%) sepia(98%) saturate(2375%) hue-rotate(202deg)
+          brightness(95%) contrast(95%);
+}
+
+.btn-pill.instagram {
+  color: #E1306C;
+}
+
+.btn-pill.instagram img {
+  filter: invert(36%) sepia(93%) saturate(7469%) hue-rotate(318deg)
+          brightness(96%) contrast(99%);
+}
+
+/* ===== MAPA (imagem com texto abaixo) ===== */
+.map-box {
+  position: relative;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 240px;
+  background: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.98);
+}
+
+.map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.map-pin img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(96%)
+          saturate(7423%) hue-rotate(358deg) brightness(97%) contrast(118%);
+  /* 🔴 transforma o ícone atual em vermelho puro */
+  drop-shadow: 0 1px 3px rgba(0, 0, 0, .35);
+}
+
+
+/* Texto abaixo do mapa */
+.map-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.map-title {
+  font-weight: 800;
+  color: #2468B1;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.map-addr {
+  color: #555;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+/* ===== Ícones Header ===== */
+.icon-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: opacity .2s ease;
+}
+
+.icon-btn:hover img { opacity: .7; }
+
+/* ===== Bolinha de notificação ===== */
+.notify-btn {
+  position: relative;
+}
+
+.notify-dot {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  background-color: #ff2b2b;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}

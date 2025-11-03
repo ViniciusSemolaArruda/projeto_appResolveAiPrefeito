@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showroom Mobile – Contatos</title>
+  <base href="/" />
+
+  <!-- CSS base -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <!-- CSS desta página -->
+  <link rel="stylesheet" href="/src/screens/Contact/contact.css" />
+  
+
+  <!-- Helpers + Script desta página -->
+  <script src="/src/js/common.js" defer></script>
+  <script src="/src/js/contact.js" defer></script>
+</head>
+<body>
+  <main class="app-frame" id="page-contact">
+    <!-- Header igual ao das outras telas -->
+    <header class="home-header">
+      <div class="home-brand">
+        <img src="/src/assets/img/logo.png" alt="Logo" class="home-logo" />
+        <span class="home-title">Resolve Aí Prefeito</span>
+      </div>
+      <div class="home-actions">
+    <!-- Botão de notificação com bolinha -->
+    <button class="icon-btn notify-btn" aria-label="Notificações" id="btn-notify">
+      <img src="/src/assets/img/notificacao.png" alt="Notificações" />
+      <span class="notify-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Sair reinicia o app -->
+    <a class="icon-btn" aria-label="Sair" href="/index.html" id="btn-logout">
+      <img src="/src/assets/img/sair.png" alt="Sair" />
+    </a>
+  </div>
+    </header>
+
+    <!-- Sub-barra: Voltar -->
+    <div class="report-subheader">
+      <button class="back-link" id="btn-back-contact" aria-label="Voltar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Voltar</span>
+      </button>
+    </div>
+
+    <!-- Conteúdo -->
+    <section class="contact-screen">
+
+      <!-- Card: Título + intro -->
+      <article class="contact-card">
+        <h2 class="card-title">Contatos e Informações</h2>
+        <p class="card-sub">Telefones úteis e informações de contato da prefeitura</p>
+      </article>
+
+      <!-- Emergências -->
+      <article class="contact-card">
+        <h3 class="section-title">Emergências</h3>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>SAMU</strong><small>192</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Bombeiros</strong><small>193</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Polícia Militar</strong><small>190</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Defesa Civil</strong><small>199</small></div>
+        </div>
+      </article>
+
+      <!-- Prefeitura Municipal -->
+      <article class="contact-card">
+        <h3 class="section-title">Prefeitura Municipal</h3>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Telefone</strong><small>(24) 3xxx-xxxx</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/o-email.png" alt="Email" /></span>
+          <div class="itxt">
+            <strong>Email</strong>
+            <small>contato@engpaulodefrontin.rj.gov.br</small>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/pin.png" alt="Localização" /></span>
+          <div class="itxt">
+            <strong>Endereço</strong>
+            <small>Rua Principal, 100 - Centro<br/>Eng. Paulo de Frontin - RJ</small>
+          </div>
+        </div>
+      </article>
+
+      <!-- Departamentos -->
+      <article class="contact-card">
+        <h3 class="section-title">Departamentos</h3>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Obras e Infraestrutura</strong><small>(24) 3xxx-xx01</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Saúde</strong><small>(24) 3xxx-xx02</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Educação</strong><small>(24) 3xxx-xx03</small></div>
+        </div>
+
+        <div class="item">
+          <span class="ic"><img src="/src/assets/img/telefone.png" alt="Telefone" /></span>
+          <div class="itxt"><strong>Meio Ambiente</strong><small>(24) 3xxx-xx04</small></div>
+        </div>
+      </article>
+
+      <!-- Horário -->
+      <article class="contact-card">
+        <h3 class="section-title">Horário de Atendimento</h3>
+        <div class="row-schedule">
+          <span>Segunda a Sexta</span>
+          <strong>8:00 - 17:00</strong>
+        </div>
+        <div class="row-schedule">
+          <span>Sábado e Domingo</span>
+          <strong>Fechado</strong>
+        </div>
+      </article>
+
+      <!-- Redes -->
+      <!-- Redes -->
+<article class="contact-card">
+  <h3 class="section-title">Redes Sociais e Site</h3>
+  <div class="btns-vertical">
+    <a class="btn-pill site" href="#" aria-label="Site Oficial">
+      <img src="/src/assets/img/internet.png" alt="Site Oficial" />
+      <span>Site Oficial</span>
+    </a>
+    <a class="btn-pill facebook" href="#" aria-label="Facebook">
+      <img src="/src/assets/img/facebook.png" alt="Facebook" />
+      <span>Facebook</span>
+    </a>
+    <a class="btn-pill instagram" href="#" aria-label="Instagram">
+      <img src="/src/assets/img/instagram.png" alt="Instagram" />
+      <span>Instagram</span>
+    </a>
+  </div>
+</article>
+
+
+    <!-- Localização -->
+<article class="contact-card">
+  <h3 class="section-title">Localização</h3>
+
+  <div class="map-box">
+    <img src="/src/assets/img/mapa.png" alt="Mapa da cidade" class="map-image" />
+    <div class="map-pin">
+      <img src="/src/assets/img/pin.png" alt="Localização" />
+    </div>
+  </div>
+
+  <div class="map-info">
+    <p class="map-title">Prefeitura Municipal de Eng. Paulo de Frontin</p>
+    <small class="map-addr">
+      Rua Principal, 100 - Centro<br/>
+      Eng. Paulo de Frontin - RJ
+    </small>
+  </div>
+</article>
+
+
+    </section>
+  </main>
+</body>
+</html>

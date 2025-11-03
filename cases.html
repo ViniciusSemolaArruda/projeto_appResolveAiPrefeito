@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showroom Mobile – Minhas Ocorrências</title>
+<base href="/" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <link rel="stylesheet" href="/src/screens/Cases/cases.css" />
+
+  <!-- Helpers + Dados + Script da página -->
+  
+ <script src="/src/js/data.js" defer></script>
+  <script src="/src/js/common.js" defer></script>
+<script src="/src/js/cases.js" defer></script>
+
+
+</head>
+<body>
+  <main class="app-frame" id="page-cases">
+    <header class="home-header">
+      <div class="home-brand">
+        <img src="./src/assets/img/logo.png" alt="Logo" class="home-logo" />
+        <span class="home-title">Resolve Aí Prefeito</span>
+      </div>
+      <div class="home-actions">
+    <!-- Botão de notificação com bolinha -->
+    <button class="icon-btn notify-btn" aria-label="Notificações" id="btn-notify">
+      <img src="/src/assets/img/notificacao.png" alt="Notificações" />
+      <span class="notify-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- Sair reinicia o app -->
+    <a class="icon-btn" aria-label="Sair" href="/index.html" id="btn-logout">
+      <img src="/src/assets/img/sair.png" alt="Sair" />
+    </a>
+  </div>
+    </header>
+
+    <div class="report-subheader">
+      <button class="back-link" id="btn-back-cases" aria-label="Voltar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Voltar</span>
+      </button>
+    </div>
+
+    <section class="cases-screen">
+      <article class="cases-intro">
+        <h2 class="cases-title">Minhas Ocorrências</h2>
+        <p class="cases-sub">Acompanhe o status de todas as suas solicitações</p>
+      </article>
+
+      <div class="cases-filters">
+        <button class="chip is-active">Todas (3)</button>
+        <button class="chip">📦 Recebidas (1)</button>
+        <button class="chip">🔧 Em andamento (1)</button>
+        <button class="chip">✅ Concluídas (1)</button>
+      </div>
+
+      <div class="cases-list">
+        <!-- Card 1 -->
+        <!-- Card 1 -->
+<article class="case-card" data-case-id="1" role="link" tabindex="0" aria-label="Abrir detalhes da ocorrência EPF-2025-001">
+  <div class="case-media"><img src="./src/assets/img/buraco.png" alt="Foto da ocorrência" /></div>
+  <div class="case-body">
+    <div class="case-head">
+      <h3 class="case-title">Buraco na via</h3>
+      <span class="badge badge-progress">Em andamento</span>
+    </div>
+    <p class="case-desc">Buraco grande na rua que está causando acidentes</p>
+    <div class="case-meta">
+  <span class="meta">Protocolo: EPF-2025-001</span>
+  <a href="case.html?id=1" class="meta-link">Ver detalhes</a>
+  <a href="case.html?id=1" class="meta-more" aria-label="Ver mais detalhes" title="Ver mais detalhes">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+  </div>
+</article>
+
+<!-- Card 2 -->
+<article class="case-card" data-case-id="2" role="link" tabindex="0" aria-label="Abrir detalhes da ocorrência EPF-2025-002">
+  <div class="case-media"><img src="./src/assets/img/poste.png" alt="Foto da ocorrência" /></div>
+  <div class="case-body">
+    <div class="case-head">
+      <h3 class="case-title">Poste sem iluminação</h3>
+      <span class="badge badge-done">Concluída</span>
+    </div>
+    <p class="case-desc">Poste apagado há mais de uma semana</p>
+    <div class="case-meta">
+      <span class="meta">Protocolo: EPF-2025-002</span>
+      <a href="case.html?id=2" class="meta-link">Ver detalhes</a>
+      <a href="case.html?id=2" class="meta-more" aria-label="Ver mais detalhes" title="Ver mais detalhes">
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+    </div>
+  </div>
+</article>
+
+<!-- Card 3 -->
+<article class="case-card" data-case-id="3" role="link" tabindex="0" aria-label="Abrir detalhes da ocorrência EPF-2025-003">
+  <div class="case-media"><img src="./src/assets/img/lixo.png" alt="Foto da ocorrência" /></div>
+  <div class="case-body">
+    <div class="case-head">
+      <h3 class="case-title">Lixo acumulado</h3>
+      <span class="badge badge-received">Recebida</span>
+    </div>
+    <p class="case-desc">Lixo não recolhido há 3 dias</p>
+    <div class="case-meta">
+      <span class="meta">Protocolo: EPF-2025-003</span>
+      <a href="case.html?id=3" class="meta-link">Ver detalhes</a>
+      <a href="case.html?id=3" class="meta-more" aria-label="Ver mais detalhes" title="Ver mais detalhes">
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
+
+    </div>
+  </div>
+</article>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>
