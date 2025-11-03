@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalhe da Ocorrência – Admin</title>
+
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/styles.css" />
+  <link rel="stylesheet" href="/src/screens/Cases/cases.css" />
+  <link rel="stylesheet" href="/src/screens/Admin/admin.css" />
+</head>
+<body>
+  <!-- Header padrão -->
+  <header class="home-header report-topbar">
+    <div class="home-brand">
+      <img src="/src/assets/img/logo.png" alt="Logo" class="home-logo" />
+      <span class="home-title">Resolve Aí Prefeito</span>
+    </div>
+    <div class="home-actions">
+      <button class="icon-btn" aria-label="Notificações">
+        <img src="/src/assets/img/notificacao.png" alt="Notificações" />
+      </button>
+      <a class="icon-btn" aria-label="Sair" href="/index.html">
+        <img src="/src/assets/img/sair.png" alt="Sair" />
+      </a>
+    </div>
+  </header>
+
+  <!-- Sub-header Voltar -->
+  <div class="report-subheader">
+    <a class="back-link" href="/admin.html" aria-label="Voltar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Voltar</span>
+    </a>
+  </div>
+
+  <section class="case-detail-screen admin-case-screen">
+    <!-- Card de informações -->
+    <article class="case-detail-card">
+      <h2 class="case-detail-title" id="cd-title">—</h2>
+      <p class="case-detail-protocol" id="cd-protocol">—</p>
+
+      <div class="case-detail-media">
+        <img id="cd-image" src="/src/assets/img/buraco.png" alt="Imagem da ocorrência" />
+      </div>
+
+      <div class="field-row">
+        <span class="label-plain">Status Atual:</span>
+        <span class="badge" id="cd-status">—</span>
+      </div>
+
+      <div class="case-detail-section">
+        <h3>Categoria</h3>
+        <p id="cd-category">—</p>
+      </div>
+
+      <div class="case-detail-section">
+        <h3>Endereço</h3>
+        <p id="cd-address">—</p>
+      </div>
+
+      <div class="case-detail-section">
+        <h3>Descrição</h3>
+        <p id="cd-description">—</p>
+      </div>
+
+      <div class="case-detail-section">
+        <h3>Data de registro</h3>
+        <p id="cd-date">—</p>
+      </div>
+    </article>
+
+    <!-- Card de atualização -->
+    <article class="case-detail-card update-card">
+      <h3 class="update-title">Atualizar Status</h3>
+      <p class="update-sub">Atualize o cidadão sobre o andamento</p>
+
+      <label class="label" for="sel-status">Novo Status</label>
+      <div class="select-wrap">
+        <select id="sel-status">
+          <option value="received">Recebida</option>
+          <option value="progress">Em andamento</option>
+          <option value="done">Concluída</option>
+        </select>
+        <span class="chev">▾</span>
+      </div>
+
+      <label class="label" for="msg">Mensagem para o cidadão</label>
+      <textarea id="msg" rows="3" placeholder="Ex: Equipe foi designada e irá resolver em breve..."></textarea>
+
+      <label class="label">Anexar foto (opcional)</label>
+      <div class="dropzone mini">
+        <div class="dz-icons">
+          <img src="/src/assets/img/camera.png" alt="" />
+          <img src="/src/assets/img/upload.png" alt="" />
+        </div>
+        <label class="btn-file">
+          <input type="file" accept="image/*" />
+          Escolher arquivo
+        </label>
+      </div>
+
+      <button class="btn-primary mt12" id="btn-notify">Atualizar e Notificar</button>
+    </article>
+  </section>
+
+  <script src="/src/js/admin-case.js" defer></script>
+</body>
+</html>

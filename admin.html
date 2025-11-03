@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel Administrativo – Resolve Aí Prefeito</title>
+
+  <!-- CSS base -->
+  <link rel="stylesheet" href="./src/styles/reset.css" />
+  <link rel="stylesheet" href="./src/styles/styles.css" />
+  <link rel="stylesheet" href="./src/screens/Cases/cases.css" />
+  <link rel="stylesheet" href="./src/screens/Admin/admin.css" />
+</head>
+<body>
+
+  <!-- Header topo padrão -->
+  <header class="home-header report-topbar">
+    <div class="home-brand">
+      <img src="./src/assets/img/logo.png" alt="Logo" class="home-logo" />
+      <span class="home-title">Resolve Aí Prefeito</span>
+    </div>
+    <div class="home-actions">
+      <button class="icon-btn" aria-label="Notificações">
+        <img src="./src/assets/img/notificacao.png" alt="Notificações" />
+      </button>
+      <a class="icon-btn" aria-label="Sair" href="./index.html">
+        <img src="./src/assets/img/sair.png" alt="Sair" />
+      </a>
+    </div>
+  </header>
+
+  <!-- Sub-header com Voltar -->
+  <div class="report-subheader">
+    <a class="back-link" id="btn-voltar-admin" aria-label="Voltar" href="./index.html">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Voltar</span>
+    </a>
+  </div>
+
+  <!-- Conteúdo -->
+  <section class="admin-screen">
+    <article class="admin-intro">
+      <h2 class="admin-title">Painel Administrativo</h2>
+      <p class="admin-sub">Gerencie todas as ocorrências da cidade</p>
+    </article>
+
+    <div class="admin-tabs" role="tablist">
+      <button class="admin-tab active" data-tab="tab-ocorrencias" role="tab" aria-selected="true">Ocorrências</button>
+      <button class="admin-tab" data-tab="tab-relatorios" role="tab" aria-selected="false">Relatórios</button>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card"><strong id="kpi-total">0</strong><small>Total</small></div>
+      <div class="kpi-card"><strong id="kpi-recebidas">0</strong><small>Recebidas</small></div>
+      <div class="kpi-card"><strong id="kpi-andamento">0</strong><small>Em Andamento</small></div>
+      <div class="kpi-card"><strong id="kpi-concluidas">0</strong><small>Concluídas</small></div>
+    </div>
+
+    <div class="admin-tabs-content">
+  <div id="tab-ocorrencias" class="tab-pane active">
+    <div id="admin-cases-list" class="admin-cases-list"></div>
+  </div>
+
+  <div id="tab-relatorios" class="tab-pane">
+    <div id="reports-wrap" class="reports-wrap"></div>
+  </div>
+</div>
+
+  </section>
+
+  <!-- Caminho correto evita 404 -->
+  <script src="/src/js/admin.js" defer></script>
+</body>
+</html>

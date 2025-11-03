@@ -37,4 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Aqui você validaria o login; no demo, apenas redireciona:
     location.href = 'home.html';
   });
+
+  document.getElementById("btn-admin")?.addEventListener("click", () => {
+    // redireciona para a página do painel admin
+    window.location.href = "./admin.html";
+  });
 });

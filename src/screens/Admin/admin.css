@@ -1,0 +1,412 @@
+/* =========================================================
+   PAINEL ADMINISTRATIVO – Resolve Aí Prefeito
+   ========================================================= */
+
+/* Layout base */
+.admin-screen {
+  padding: 12px;
+  display: grid;
+  gap: 16px;
+}
+
+/* ===== Intro ===== */
+.admin-intro {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .06);
+}
+.admin-title {
+  margin: 0 0 4px;
+  color: #2468B1;
+  font-weight: 800;
+  font-size: 18px;
+}
+.admin-sub {
+  margin: 0;
+  color: #6b7482;
+  font-size: 14px;
+}
+
+/* ===== Abas ===== */
+.admin-tabs {
+  display: flex;
+  gap: 6px;
+  background: #fff;
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, .06);
+  width: fit-content;
+}
+.admin-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  color: #1c2633;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.admin-tab.active {
+  background: #2468B1;
+  color: #fff;
+}
+
+/* ===== Métricas rápidas (KPI) ===== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.kpi-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+.kpi-card strong {
+  display: block;
+  color: #2468B1;
+  font-size: 22px;
+  font-weight: 800;
+}
+.kpi-card small {
+  color: #6b7482;
+}
+
+/* ===== Tabs content ===== */
+.admin-tabs-content .tab-pane { display: none; }
+.admin-tabs-content .tab-pane.active { display: block; }
+
+/* =========================================================
+   LISTA DE OCORRÊNCIAS
+   ========================================================= */
+.admin-cases-list {
+  display: grid;
+  gap: 14px;
+  padding: 12px;
+}
+
+/* Card */
+.case-card {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 16px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
+}
+.case-media {
+  width: 132px;
+  height: 132px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #eef1f5;
+  border: 1px solid rgba(0, 0, 0, .08);
+}
+.case-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.case-body {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.case-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.case-title {
+  margin: 0;
+  color: #0f1d2b;
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+/* meta info (1 embaixo do outro) */
+.meta-block {
+  display: grid;
+  gap: 8px;
+}
+.meta-row {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+.meta-ico {
+  font-size: 16px;
+}
+.meta-link {
+  color: #2468B1;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.mt8 { margin-top: 8px; }
+
+/* ===== Badges ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 800;
+  border: 1px solid transparent;
+}
+.badge-progress {
+  background: #E9F2FF;
+  border-color: #CDE4FF;
+  color: #0F79F3;
+}
+.badge-progress::before { content: "🔧"; }
+
+.badge-received {
+  background: #F0ECFF;
+  border-color: #E0D9FF;
+  color: #6E59F6;
+}
+.badge-received::before { content: "📦"; }
+
+.badge-done {
+  background: #EAFBF2;
+  border-color: #CDEFE2;
+  color: #16A34A;
+}
+.badge-done::before { content: "✅"; }
+
+/* =========================================================
+   DETALHE DO CASO (admin-case.html)
+   ========================================================= */
+.admin-case-screen {
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+}
+.case-detail-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+  padding: 16px;
+}
+.case-detail-title {
+  margin: 0;
+  color: #0f1d2b;
+  font-weight: 800;
+  font-size: 18px;
+}
+.case-detail-protocol {
+  margin: 4px 0 10px;
+  color: #6b7482;
+  font-size: 13.5px;
+}
+.case-detail-media {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, .08);
+  margin-bottom: 14px;
+}
+.case-detail-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.case-detail-section {
+  margin-top: 12px;
+}
+.case-detail-section h3 {
+  margin: 0 0 4px;
+  color: #1c2633;
+  font-weight: 800;
+  font-size: 15px;
+}
+.case-detail-section p {
+  margin: 0;
+  color: #3d4957;
+  line-height: 1.45;
+}
+
+/* Atualizar status */
+.update-title {
+  margin: 0 0 4px;
+  color: #0f1d2b;
+  font-weight: 800;
+}
+.update-sub {
+  margin: 0 0 12px;
+  color: #6b7482;
+  font-size: 13.5px;
+}
+.select-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+.select-wrap select {
+  width: 100%;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+}
+.select-wrap .chev {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7482;
+}
+textarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, .12);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  resize: vertical;
+}
+.dropzone.mini {
+  border: 1px dashed rgba(0, 0, 0, .2);
+  border-radius: 12px;
+  padding: 12px;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  background: #fafafa;
+}
+.btn-file {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #f2f6ff;
+  color: #2468B1;
+  font-weight: 700;
+}
+.btn-file input {
+  display: none;
+}
+.btn-primary {
+  background: #16A34A;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.btn-primary:hover {
+  background: #138a3e;
+}
+.mt12 { margin-top: 12px; }
+
+/* =========================================================
+   RELATÓRIOS
+   ========================================================= */
+.reports-wrap { padding: 12px; }
+
+.report-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .06);
+}
+.report-title {
+  margin: 0;
+  font-weight: 800;
+  color: #1c2633;
+  font-size: 18px;
+}
+.report-sub {
+  margin: 4px 0 12px;
+  color: #6b7482;
+  font-size: 13.5px;
+}
+.report-month {
+  margin: 0 0 10px;
+  color: #0f1d2b;
+  font-weight: 800;
+}
+.report-kpis {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.report-kpi {
+  border-radius: 12px;
+  padding: 14px;
+  background: #f5f7fa;
+}
+.report-kpi strong {
+  display: block;
+  font-size: 22px;
+}
+.report-kpi small {
+  color: #6b7482;
+}
+.kpi-green { background: #EAFBF2; }
+.kpi-blue { background: #E9F2FF; }
+.kpi-yellow { background: #FFF8E6; }
+
+.report-subtitle {
+  margin: 8px 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #1c2633;
+}
+
+/* Barras de categoria */
+.bars { display: grid; gap: 10px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+.bar-label { color: #3d4957; }
+.bar-track {
+  height: 6px;
+  background: #eceff3;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--w, 0%);
+  border-radius: 999px;
+}
+.bar-value { color: #6b7482; font-size: 13px; }
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+@media (min-width: 420px) {
+  .case-card { grid-template-columns: 144px 1fr; padding: 20px; }
+  .case-media { width: 144px; height: 144px; }
+  .case-title { font-size: 20px; }
+  .case-desc { font-size: 15.5px; }
+  .meta, .meta-link { font-size: 14.5px; }
+}
