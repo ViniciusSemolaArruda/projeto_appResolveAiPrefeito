@@ -177,6 +177,7 @@
   font-weight: 800;
   border: 1px solid transparent;
 }
+
 .badge-progress {
   background: #E9F2FF;
   border-color: #CDE4FF;
@@ -240,7 +241,7 @@
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
   padding: 16px;
-  margin-top: 50px;
+  margin-top: 0px;
 }
 .case-detail-title {
   margin: 0;
@@ -447,39 +448,36 @@ textarea {
 }
 
 
-/* === FIX: header topo e barra Voltar fixos === */
+/* fallback; será atualizado via JS */
+:root { --topbar-h: 100px; }
 
-/* garante o header colado no topo */
-.home-header {
+/* O CONTÊINER QUE ROLA (escolha UM) */
+/* Se sua página rola no BODY, garanta que não há overflow em ancestrais: */
+html, body, .app-frame { height: auto; overflow: visible; }
+
+/* …ou, se você QUER que a .app-frame seja o scroller, use isto e mantenha
+   header + subheader como filhos diretos de .app-frame: */
+/* .app-frame { height: 100vh; overflow-y: auto; } */
+
+/* HEADER sempre visível */
+.home-header{
   position: sticky;
   top: 0;
-  z-index: 1000;
-}
-
-/* alturas dinâmicas */
-:root{
-  --topbar-h: 100px;   /* será atualizado via JS */
-  --subbar-h: 44px;
-}
-
-/* barra Voltar realmente FIXA logo abaixo do header */
-.report-subheader{
-  position: fixed !important;
-  top: var(--topbar-h) !important;
-  left: 0;
-  right: 0;
-  height: var(--subbar-h);
-  z-index: 999; /* abaixo do header, acima do conteúdo */
-  display: flex;
-  align-items: center;
+  z-index: 30;               /* acima da sub-barra */
   background: #fff;
   border-bottom: 1px solid rgba(0,0,0,.06);
-  padding: 0 14px;
+}
+
+/* SUB-BARRA “VOLTAR” sempre visível logo abaixo do header */
+.report-subheader{
+  position: sticky;
+  top: var(--topbar-h);       /* cola sob o header (altura dinâmica) */
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 10px 14px;
   box-shadow: 0 1px 0 rgba(0,0,0,.02);
 }
 
-/* dá respiro no conteúdo pra não ficar escondido sob a barra fixa */
-.admin-screen {
-  /* somar a altura da barra fixa */
-  padding-top: calc(var(--subbar-h) + 12px);
-}
+/* NÃO empurre o conteúdo com margens mágicas */
+.case-detail-card{ margin-top: 0; }
