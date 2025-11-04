@@ -1,6 +1,64 @@
 // /src/js/cases.js
 document.addEventListener('DOMContentLoaded', () => {
   /* ================================================
+     MAPAS GLOBAIS DE STATUS (mesmas cores/ícones)
+  ================================================= */
+  const STATUS_LABEL = {
+    received: 'Recebida',
+    progress: 'Em andamento',
+    done: 'Concluída',
+  };
+  const STATUS_CLASS = {
+    received: 'badge-received',
+    progress: 'badge-progress',
+    done: 'badge-done',
+  };
+  const STATUS_ICON = {
+    received: '📦',
+    progress: '🔧',
+    done: '✅',
+  };
+
+  // expõe para outras páginas (ex.: case.js)
+  try {
+    window.STATUS_LABEL = Object.assign({}, window.STATUS_LABEL || {}, {
+      RECEIVED: 'Recebida',
+      PROGRESS: 'Em andamento',
+      DONE: 'Concluída',
+    });
+    window.STATUS_CLASS = Object.assign({}, window.STATUS_CLASS || {}, {
+      RECEIVED: 'badge-received',
+      PROGRESS: 'badge-progress',
+      DONE: 'badge-done',
+    });
+    window.STATUS_ICON = Object.assign({}, window.STATUS_ICON || {}, {
+      RECEIVED: '📦',
+      PROGRESS: '🔧',
+      DONE: '✅',
+    });
+  } catch {}
+
+  // normalizador para garantir chaves coerentes
+  const NORM = {
+    received: 'received',
+    progress: 'progress',
+    done: 'done',
+    RECEIVED: 'received',
+    PROGRESS: 'progress',
+    DONE: 'done',
+  };
+  const norm = (v) => NORM[String(v || '').trim()] || 'received';
+
+  // helper: monta o badge com ícone e label (sem ::before)
+  function renderStatusBadge(status) {
+    const k = norm(status);
+    const cls = STATUS_CLASS[k] || 'badge-received';
+    const lbl = STATUS_LABEL[k] || 'Status';
+    const ico = STATUS_ICON[k] || '';
+    return `<span class="badge ${cls}"><span class="b-ico" aria-hidden="true">${ico}</span>${lbl}</span>`;
+  }
+
+  /* ================================================
      VOLTAR INTELIGENTE
   ================================================= */
   const backBtn = document.getElementById('btn-back-cases');
@@ -38,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================================================
      HELPERS
   ================================================= */
-  // Extrai o ID do case a partir de um card
   const getCaseIdFromCard = (card, idxFallback) => {
     // 1) meta-link com href case.html?id=...
     const link = card.querySelector('.meta-link[href*="case.html?id="]');
@@ -52,39 +109,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2) data-case-id no article
     const dataId = card.getAttribute('data-case-id');
     if (dataId) return dataId;
-    // 3) fallback por índice (evite em produção, mas útil pra mock)
+    // 3) fallback por índice (mock)
     return String(idxFallback + 1);
   };
 
   const navigateToCase = (id) => {
     if (!id) return;
-    localStorage.setItem('lastCaseId', id);
+    try { localStorage.setItem('lastCaseId', id); } catch {}
     location.href = `/case.html?id=${encodeURIComponent(id)}`;
   };
 
   /* ================================================
      CARDS CLICÁVEIS + LINKS CONSISTENTES
+     (e badges com ícone)
   ================================================= */
   document.querySelectorAll('.case-card').forEach((card, idx) => {
     const id = getCaseIdFromCard(card, idx);
 
-    // Clique no card inteiro (exceto cliques em elementos interativos)
+    // Se o badge de status existir, injeta ícone + label
+    const badgeEl = card.querySelector('.case-head .badge');
+    if (badgeEl) {
+      // Tenta deduzir o status pela classe existente OU por data-* no card
+      const cls = badgeEl.className;
+      let st = 'received';
+      if (/\bbadge-progress\b/.test(cls)) st = 'progress';
+      else if (/\bbadge-done\b/.test(cls)) st = 'done';
+      else if (/\bbadge-received\b/.test(cls)) st = 'received';
+      // Se tiver data-status no card, usa
+      const dataStatus = card.getAttribute('data-status');
+      if (dataStatus) st = norm(dataStatus);
+
+      // Substitui conteúdo pelo badge com ícone (sem duplicar)
+      badgeEl.outerHTML = renderStatusBadge(st);
+    }
+
+    // Clique no card inteiro (exceto interativos)
     card.addEventListener('click', (e) => {
       const t = e.target;
-      if (t.closest('a, button')) return; // não intercepta cliques em links/botões
+      if (t.closest('a, button')) return;
       navigateToCase(id);
     });
 
-    // Acessibilidade: Enter ou Espaço em cards com role="link"
+    // Acessibilidade: Enter/Espaço
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
-        // Evita scroll do Espaço
         e.preventDefault();
         navigateToCase(id);
       }
     });
 
-    // Link "Ver detalhes" deve salvar o id e navegar padronizado
+    // Link "Ver detalhes" padronizado
     const detailsLink = card.querySelector('.meta-link[href*="case.html?id="]');
     if (detailsLink) {
       detailsLink.addEventListener('click', (e) => {
@@ -94,14 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Seta (chevron) à direita: mesmo comportamento do link
+    // Chevron/“mais”
     const moreLink = card.querySelector('.meta-more[href*="case.html?id="], .meta-more');
     if (moreLink) {
       moreLink.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        // tenta extrair do próprio href primeiro
         let hrefId = '';
         const href = moreLink.getAttribute('href') || '';
         if (href) {

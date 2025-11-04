@@ -1,6 +1,6 @@
 // /src/js/admin-case.js
 
-// Mesmo dataset do painel (para ficar standalone)
+// ===== Dataset (standalone, igual ao painel) =====
 const CASES = [
   {
     id: "1",
@@ -42,43 +42,102 @@ const STATUS_CLASS = { progress:"badge-progress", received:"badge-received", don
 
 function qs(id){ return document.getElementById(id); }
 
-// Pega ?id= da URL
-function getIdFromQuery() {
-  const p = new URLSearchParams(location.search);
-  return p.get("id") || "1";
+// ===== UI: fixa a sub-barra "Voltar" logo abaixo do header =====
+function setDynamicTopbarHeight() {
+  const header = document.querySelector(".home-header");
+  if (!header) return;
+  const h = Math.ceil(header.getBoundingClientRect().height);
+  document.documentElement.style.setProperty("--topbar-h", h + "px");
 }
 
-function loadCase() {
-  const id = getIdFromQuery();
-  const data = CASES.find(c => c.id === id);
-  if (!data) { location.href = "/admin.html"; return; }
+// ===== Navegação: Back com fallback =====
+function setupBackLink() {
+  const back = document.querySelector(".back-link");
+  if (!back) return;
 
-  qs("cd-title").textContent = data.title;
-  qs("cd-protocol").textContent = `Protocolo: ${data.protocol}`;
-  const statusEl = qs("cd-status");
-  statusEl.className = `badge ${STATUS_CLASS[data.status]}`;
-  statusEl.textContent = STATUS_LABEL[data.status];
-
-  qs("cd-image").src = data.image;
-  qs("cd-category").textContent = data.category;
-  qs("cd-address").textContent = data.address;
-  qs("cd-description").textContent = data.description;
-  qs("cd-date").textContent = data.date;
-
-  // select default
-  const sel = qs("sel-status");
-  sel.value = data.status;
-}
-
-function setupActions() {
-  qs("btn-notify").addEventListener("click", () => {
-    const newStatus = qs("sel-status").value;
-    const msg = qs("msg").value.trim();
-    alert(`(Demonstração)\nStatus atualizado para: ${STATUS_LABEL[newStatus]}\nMensagem: ${msg || "—"}`);
+  back.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    if (history.length > 1) {
+      history.back();
+    } else {
+      window.location.href = "/admin.html";
+    }
   });
 }
 
+// ===== ID da ocorrência: querystring -> sessionStorage -> fallback =====
+function getIdFromQuery() {
+  const p = new URLSearchParams(window.location.search);
+  let id = p.get("id") || sessionStorage.getItem("selectedCaseId") || "";
+  if (!CASES.some(c => c.id === id)) id = CASES[0].id;
+  return id;
+}
+
+// ===== Carrega dados no detalhe =====
+function loadCase() {
+  const id = getIdFromQuery();
+  const data = CASES.find(c => c.id === id);
+  if (!data) { window.location.href = "/admin.html"; return; }
+
+  // Mantém id selecionado para refresh/volta
+  try { sessionStorage.setItem("selectedCaseId", id); } catch {}
+
+  // Texto e mídia
+  const img = qs("cd-image");
+  if (img) img.src = data.image;
+
+  const t = qs("cd-title");
+  if (t) t.textContent = data.title;
+
+  const prot = qs("cd-protocol");
+  if (prot) prot.textContent = `Protocolo: ${data.protocol}`;
+
+  const cat = qs("cd-category");
+  if (cat) cat.textContent = data.category;
+
+  const addr = qs("cd-address");
+  if (addr) addr.textContent = data.address;
+
+  const desc = qs("cd-description");
+  if (desc) desc.textContent = data.description;
+
+  const dt = qs("cd-date");
+  if (dt) dt.textContent = data.date;
+
+  // Badge de status
+  const statusEl = qs("cd-status");
+  if (statusEl) {
+    statusEl.className = `badge ${STATUS_CLASS[data.status]}`;
+    statusEl.textContent = STATUS_LABEL[data.status];
+  }
+
+  // Select de status espelhando o atual
+  const sel = qs("sel-status");
+  if (sel) sel.value = data.status;
+}
+
+// ===== Ações (demo de notificação) =====
+function setupActions() {
+  const btn = qs("btn-notify");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const sel = qs("sel-status");
+    const newStatus = sel ? sel.value : "received";
+    const msg = (qs("msg")?.value || "").trim();
+
+    alert(`(Demonstração)
+Status atualizado para: ${STATUS_LABEL[newStatus] || newStatus}
+Mensagem: ${msg || "—"}`);
+  });
+}
+
+// ===== Boot =====
 document.addEventListener("DOMContentLoaded", () => {
+  setDynamicTopbarHeight();
+  window.addEventListener("resize", setDynamicTopbarHeight);
+
+  setupBackLink();
   loadCase();
   setupActions();
 });

@@ -53,6 +53,12 @@ function updateKPIs() {
   document.getElementById("kpi-concluidas").textContent = concluidas;
 }
 
+// ===== Navegação para o detalhe (centralizada) =====
+function navigateToCase(id) {
+  try { sessionStorage.setItem("selectedCaseId", id); } catch {}
+  window.location.href = `/admin-case.html?id=${encodeURIComponent(id)}`;
+}
+
 // ===== Lista (Ocorrências) =====
 function renderList() {
   const wrap = document.getElementById("admin-cases-list");
@@ -62,9 +68,12 @@ function renderList() {
   CASES.forEach(c => {
     const card = document.createElement("article");
     card.className = "case-card";
+    card.tabIndex = 0;               // acessível por teclado
+    card.dataset.id = c.id;
+
     card.innerHTML = `
       <div class="case-media">
-        <img src="${c.image}" alt="Imagem da ocorrência" />
+        <img src="${c.image}" alt="Imagem da ocorrência" loading="lazy" />
       </div>
       <div class="case-body">
         <div class="case-head">
@@ -81,9 +90,27 @@ function renderList() {
         <a class="meta-link mt8" href="/admin-case.html?id=${c.id}" aria-label="Ver detalhes">Ver detalhes</a>
       </div>
     `;
-    card.addEventListener("click", (e) => {
-      if (!e.target.closest("a")) window.location.href = `/admin-case.html?id=${c.id}`;
+
+    // Clique no card inteiro
+    card.addEventListener("click", (ev) => {
+      // Se clicou no link interno, deixa o link cuidar (mas salvamos o id)
+      const a = ev.target.closest("a.meta-link");
+      if (a) {
+        ev.preventDefault();
+        navigateToCase(c.id);
+        return;
+      }
+      navigateToCase(c.id);
     });
+
+    // Teclado: Enter/Espaço navega
+    card.addEventListener("keydown", (ev) => {
+      if (ev.key === "Enter" || ev.key === " ") {
+        ev.preventDefault();
+        navigateToCase(c.id);
+      }
+    });
+
     wrap.appendChild(card);
   });
 }
@@ -172,4 +199,27 @@ document.addEventListener("DOMContentLoaded", () => {
   updateKPIs();
   renderList();
   setupTabs();
+});
+
+
+/* === FIX: medir header e ajustar --topbar-h dinamicamente === */
+function setDynamicTopbarHeight() {
+  const header = document.querySelector(".home-header");
+  if (!header) return;
+  const h = Math.ceil(header.getBoundingClientRect().height);
+  document.documentElement.style.setProperty("--topbar-h", h + "px");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setDynamicTopbarHeight();
+
+  // Atualiza ao redimensionar / mudanças de layout
+  window.addEventListener("resize", setDynamicTopbarHeight);
+
+  // Se o header mudar de altura (logo carrega, etc.), observa e recalcula
+  const header = document.querySelector(".home-header");
+  if (window.ResizeObserver && header) {
+    const ro = new ResizeObserver(() => setDynamicTopbarHeight());
+    ro.observe(header);
+  }
 });

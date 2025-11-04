@@ -2,6 +2,12 @@
    PAINEL ADMINISTRATIVO – Resolve Aí Prefeito
    ========================================================= */
 
+/* Alturas dinâmicas */
+:root{
+  --topbar-h: 100px;   /* ajustado via JS conforme header real */
+  --subbar-h: 44px;    /* altura da barra "Voltar" */
+}
+
 /* Layout base */
 .admin-screen {
   padding: 12px;
@@ -195,17 +201,46 @@
 /* =========================================================
    DETALHE DO CASO (admin-case.html)
    ========================================================= */
-.admin-case-screen {
+
+/* Sub-barra Voltar fixa (logo abaixo do header) */
+/* Sub-barra Voltar STICKY (logo abaixo do header) */
+.report-subheader{
+  position: sticky;
+  top: var(--topbar-h);   /* cola abaixo do header real */
+  z-index: 29;            /* abaixo do header (que costuma ter 30), acima do conteúdo */
+  height: var(--subbar-h);
+  display: flex;
+  align-items: center;
+
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 0 14px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+.back-link{
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 0; padding: 4px 0;
+  color: #111; font-weight: 700; font-size: 14px; cursor: pointer;
+}
+.back-link:hover{ opacity: .85; }
+.back-link:active{ transform: translateY(1px); }
+
+/* Área do detalhe */
+.admin-case-screen,
+.case-detail-screen {
   padding: 12px;
   display: grid;
   gap: 12px;
 }
+
 .case-detail-card {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, .08);
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
   padding: 16px;
+  margin-top: 50px;
 }
 .case-detail-title {
   margin: 0;
@@ -409,4 +444,42 @@ textarea {
   .case-title { font-size: 20px; }
   .case-desc { font-size: 15.5px; }
   .meta, .meta-link { font-size: 14.5px; }
+}
+
+
+/* === FIX: header topo e barra Voltar fixos === */
+
+/* garante o header colado no topo */
+.home-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* alturas dinâmicas */
+:root{
+  --topbar-h: 100px;   /* será atualizado via JS */
+  --subbar-h: 44px;
+}
+
+/* barra Voltar realmente FIXA logo abaixo do header */
+.report-subheader{
+  position: fixed !important;
+  top: var(--topbar-h) !important;
+  left: 0;
+  right: 0;
+  height: var(--subbar-h);
+  z-index: 999; /* abaixo do header, acima do conteúdo */
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  padding: 0 14px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+/* dá respiro no conteúdo pra não ficar escondido sob a barra fixa */
+.admin-screen {
+  /* somar a altura da barra fixa */
+  padding-top: calc(var(--subbar-h) + 12px);
 }
